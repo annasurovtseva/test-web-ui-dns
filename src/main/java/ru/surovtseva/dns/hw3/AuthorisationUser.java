@@ -37,6 +37,8 @@ public class AuthorisationUser {
                 visibilityOf(driver.findElement(By.xpath(buttonEntry))));
         driver.findElement(By.xpath(buttonEntry)).click();
 
+        new WebDriverWait(driver, 3).until(ExpectedConditions.
+                visibilityOf(driver.findElement(By.xpath(buttonEntryWithPass))));
         System.out.println("Присутствует кнопка Войти с паролем: " +
                 driver.findElement(By.xpath(buttonEntryWithPass)).isDisplayed());
         System.out.println("------------------------");
