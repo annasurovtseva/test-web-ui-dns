@@ -53,6 +53,7 @@ public class CreateWishList {
                 driver.findElement(By.xpath(createdListsSection)).isDisplayed());
         System.out.println("------------------------");
 
+        //Проверка присутствует Кнопка Создать новый список
         WebElement buttonCreateNewList = driver.findElement(By.xpath(buttonCreateWishlist));
 
         System.out.println("Присутствует кнопка Создать новый список: " +
@@ -93,10 +94,12 @@ public class CreateWishList {
 
         driver.manage().window().maximize();
 
+        new WebDriverWait(driver, 3).until(ExpectedConditions.
+                visibilityOf(driver.findElement(By.xpath(buttonEntry))));
         driver.findElement(By.xpath(buttonEntry)).click();
+
         new WebDriverWait(driver, 3).until(ExpectedConditions.
                 visibilityOf(driver.findElement(By.xpath(buttonEntryWithPass))));
-
         driver.findElement(By.xpath(buttonEntryWithPass)).click();
 
         driver.findElement(By.xpath(loginInput)).sendKeys(USER_LOGIN);

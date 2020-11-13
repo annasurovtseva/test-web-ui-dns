@@ -35,17 +35,22 @@ public class AuthorisationUser {
         //click on button Войти
         new WebDriverWait(driver, 3).until(ExpectedConditions.
                 visibilityOf(driver.findElement(By.xpath(buttonEntry))));
+        System.out.println("Присутствует кнопка Войти: " +
+                driver.findElement(By.xpath(buttonEntry)).isDisplayed());
+        System.out.println("------------------------");
+
         driver.findElement(By.xpath(buttonEntry)).click();
 
+        //click on button Войти с паролем
         new WebDriverWait(driver, 3).until(ExpectedConditions.
                 visibilityOf(driver.findElement(By.xpath(buttonEntryWithPass))));
         System.out.println("Присутствует кнопка Войти с паролем: " +
                 driver.findElement(By.xpath(buttonEntryWithPass)).isDisplayed());
         System.out.println("------------------------");
 
-        //click on button Войти с паролем
         driver.findElement(By.xpath(buttonEntryWithPass)).click();
 
+        //Проверка
         System.out.println("Открыта форма Войти с паролем: " +
                 driver.findElement(By.xpath(formEntryWithPass)).isDisplayed());
         System.out.println("------------------------");
@@ -58,8 +63,11 @@ public class AuthorisationUser {
         driver.findElement(By.xpath(buttonEntryOnForm)).click();
 
         //click on Иконка аватара - разворачивает меню пользователя
+        new WebDriverWait(driver, 3).until(ExpectedConditions.
+                visibilityOf(driver.findElement(By.xpath(imgAvatar))));
         driver.findElement(By.xpath(imgAvatar)).click();
 
+        //Проверка
         new WebDriverWait(driver, 3).until(ExpectedConditions.
                 visibilityOf(driver.findElement(By.xpath(userName))));
         System.out.println("В заголовке меню пользователя указано имя Mydiary: " +
