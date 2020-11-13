@@ -65,8 +65,8 @@ public class AuthorisationUser {
         driver.findElement(By.xpath(buttonEntryOnForm)).click();
 
         //Разворачивается меню пользователя
-        new WebDriverWait(driver, 3).until(ExpectedConditions.
-                visibilityOf(driver.findElement(By.xpath(imgAvatar))));
+//        new WebDriverWait(driver, 3).until(ExpectedConditions.
+//                visibilityOf(driver.findElement(By.xpath(imgAvatar))));
 
         Actions action = new Actions(driver);
         WebElement avatar = driver.findElement(By.xpath(imgAvatar));
