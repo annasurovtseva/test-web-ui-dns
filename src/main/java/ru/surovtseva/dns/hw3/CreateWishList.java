@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -41,7 +42,12 @@ public class CreateWishList {
         //Переход в Меню пользователя - Избранные товары
         new WebDriverWait(driver, 3).until(ExpectedConditions.
                 visibilityOf(driver.findElement(By.xpath(imgAvatar))));
-        driver.findElement(By.xpath(imgAvatar)).click();
+
+        Actions action = new Actions(driver);
+        WebElement avatar = driver.findElement(By.xpath(imgAvatar));
+        action.moveToElement(avatar).perform();
+
+//        driver.findElement(By.xpath(imgAvatar)).click();
         driver.findElement(By.xpath(favouriteGoods)).click();
 
         //Проверка: Открыта страница Кабинет покупателя
@@ -86,7 +92,7 @@ public class CreateWishList {
                 driver.findElement(By.xpath(nameOfCreatedList)).isDisplayed());
         System.out.println("------------------------");
 
-        tearDown();
+//        tearDown();
     }
 
     private static void login() {

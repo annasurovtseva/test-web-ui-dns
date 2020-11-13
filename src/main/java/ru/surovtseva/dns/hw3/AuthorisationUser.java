@@ -2,7 +2,9 @@ package ru.surovtseva.dns.hw3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -62,10 +64,14 @@ public class AuthorisationUser {
         //click on button Войти на форме Войти с паролем
         driver.findElement(By.xpath(buttonEntryOnForm)).click();
 
-        //click on Иконка аватара - разворачивает меню пользователя
+        //Разворачивается меню пользователя
         new WebDriverWait(driver, 3).until(ExpectedConditions.
                 visibilityOf(driver.findElement(By.xpath(imgAvatar))));
-        driver.findElement(By.xpath(imgAvatar)).click();
+
+        Actions action = new Actions(driver);
+        WebElement avatar = driver.findElement(By.xpath(imgAvatar));
+        action.moveToElement(avatar).perform();
+//        driver.findElement(By.xpath(imgAvatar)).click();
 
         //Проверка
         new WebDriverWait(driver, 3).until(ExpectedConditions.
@@ -73,7 +79,7 @@ public class AuthorisationUser {
         System.out.println("В заголовке меню пользователя указано имя Mydiary: " +
                 driver.findElement(By.xpath(userName)).getText().equals("Mydiary"));
 
-        tearDown();
+//        tearDown();
 
     }
 
