@@ -21,7 +21,7 @@ public class AuthorisationUser {
     private static final String loginInput = "//div[@class='form-entry-with-password__input']/div/input";
     private static final String passwordInput = "//div[@class='form-entry-with-password__password']/div/input";
     private static final String buttonEntryOnForm = "//div[contains(@class, 'base-ui-button')]";
-    private static final String imgAvatar = "//div[@class='header__login']/img[@class='header-profile__avatar loaded']";
+    private static final String imgAvatarHeader = "//div[@class='header__login']/img[@class='header-profile__avatar loaded']";
     private static final String userName = "//a[@class='header-profile__username']";
 
 
@@ -65,12 +65,10 @@ public class AuthorisationUser {
         driver.findElement(By.xpath(buttonEntryOnForm)).click();
 
         //Разворачивается меню пользователя
-//        new WebDriverWait(driver, 3).until(ExpectedConditions.
-//                visibilityOf(driver.findElement(By.xpath(imgAvatar))));
+        Actions actionHeader = new Actions(driver);
+        WebElement avatar = driver.findElement(By.xpath(imgAvatarHeader));
+        actionHeader.moveToElement(avatar).perform();
 
-        Actions action = new Actions(driver);
-        WebElement avatar = driver.findElement(By.xpath(imgAvatar));
-        action.moveToElement(avatar).perform();
 //        driver.findElement(By.xpath(imgAvatar)).click();
 
         //Проверка
