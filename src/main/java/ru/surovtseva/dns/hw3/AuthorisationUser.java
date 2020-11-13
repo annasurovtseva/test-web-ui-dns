@@ -69,16 +69,13 @@ public class AuthorisationUser {
         WebElement avatar = driver.findElement(By.xpath(imgAvatarHeader));
         actionHeader.moveToElement(avatar).perform();
 
-//        driver.findElement(By.xpath(imgAvatar)).click();
-
         //Проверка
         new WebDriverWait(driver, 3).until(ExpectedConditions.
                 visibilityOf(driver.findElement(By.xpath(userName))));
         System.out.println("В заголовке меню пользователя указано имя Mydiary: " +
                 driver.findElement(By.xpath(userName)).getText().equals("Mydiary"));
 
-//        tearDown();
-
+        tearDown();
     }
 
     private static void tearDown() {

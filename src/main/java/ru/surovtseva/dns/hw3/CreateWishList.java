@@ -44,7 +44,6 @@ public class CreateWishList {
         WebElement avatar = driver.findElement(By.xpath(imgAvatar));
         action.moveToElement(avatar).perform();
 
-//        driver.findElement(By.xpath(imgAvatar)).click();
         driver.findElement(By.xpath(favouriteGoods)).click();
 
         //Проверка: Открыта страница Кабинет покупателя
@@ -89,7 +88,7 @@ public class CreateWishList {
                 driver.findElement(By.xpath(nameOfCreatedList)).isDisplayed());
         System.out.println("------------------------");
 
-//        tearDown();
+        tearDown();
     }
 
     private static void login() {
