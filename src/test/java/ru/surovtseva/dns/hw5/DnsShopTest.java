@@ -42,7 +42,7 @@ public class DnsShopTest {
     private static final String buttonCreate = "//span[contains(@class, 'submit-changes')]";
     private static final String nameOfCreatedList = "//div[@class='name' and contains(.,'"+nameOfList+"')]";
     private static final String inputSearchPath = "//input[@placeholder='Поиск по сайту']";
-    private static final String requestText = "Samsung UE43N5500AU";
+    private static final String requestText = "LED Samsung LT24H390SIX";
     private static final String pageGoodTitle = "//h1[contains(@class, 'page-title')]";
     private static final String buyButtonPath = "//button[contains(.,'Купить')]";
     private static final String modalTitleText = "Основные товары";
@@ -121,6 +121,9 @@ public class DnsShopTest {
     private void toFavouriteButtonIsClick() {
         driver.findElement(By.className("wishlist__icon-add")).click();
 
+        new WebDriverWait(driver, 7).until(ExpectedConditions.
+                visibilityOf(driver.findElement(By.className("wishlist__icon-add_added"))));
+
         elementParameters.put("inFavouriteAfterContent", ((JavascriptExecutor) driver).
                 executeScript("return window.document.defaultView.getComputedStyle(" +
                         "window.document.getElementsByClassName('wishlist__icon-add')[0],':after')" +
@@ -132,7 +135,7 @@ public class DnsShopTest {
                         ".getPropertyValue('color')"));
 
         Assertions.assertAll(
-                ()->assertThat(elementParameters.get("inFavouriteAfterContent").toString().equals("В избранном")).
+                ()->assertThat(elementParameters.get("inFavouriteAfterContent").toString().equals("\"В избранном\"")).
                         as("Присутствует кнопка В избранном").isTrue(),
                 ()->assertThat(elementParameters.get("inFavouriteIconColor").toString().equals("rgb(252, 133, 7)")).
                         as("Иконка В избранном имеет цвет rgb(252, 133, 7)").isTrue()
@@ -149,7 +152,7 @@ public class DnsShopTest {
                         "window.document.getElementsByClassName('wishlist__icon-add')[0],':after')" +
                         ".getPropertyValue('content')"));
 
-        assertThat(elementParameters.get("favouriteAfterContent").toString().equals("В избранное")).
+        assertThat(elementParameters.get("favouriteAfterContent").toString().equals("\"В избранное\"")).
                         as("Присутствует кнопка В избранное").isTrue();
 
     }
