@@ -63,7 +63,6 @@ public class DnsShopTest extends BaseTest {
         FavouriteGoodsPage favouriteGoodsPage = (FavouriteGoodsPage) (new HomePage(driver)
                 .getMainMenu()
                 .clickOnButtonEntry()
-//                .checkButtonEntryWithPass()
                 .clickOnButtonEntryWithPass()
                 .authorisationWithPass(USER_LOGIN,USER_PASSWORD)
                 .getMainMenu()
