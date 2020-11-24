@@ -28,7 +28,6 @@ public class CartPage extends BasePage {
 
     public CartPage checkProductDisplayInCart(String searchRequest) {
         By productNamePath = By.xpath("//a[@class = 'cart-items__product-name-link' and contains(.,'"+searchRequest+"')]");
-//        String productNamePath ="//a[@class = 'cart-items__product-name-link' and contains(.,'"+searchRequest+"')]";
         WebElement productName = driver.findElement(productNamePath);
         assertThat(productName.isDisplayed())
                 .as("Присутствует секция с наименованием товара " + searchRequest).isTrue();

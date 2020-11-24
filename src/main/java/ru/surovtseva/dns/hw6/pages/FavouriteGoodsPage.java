@@ -110,14 +110,4 @@ public class FavouriteGoodsPage extends BasePage {
                 .as("В общем списке отображается товар " + searchRequest).isTrue();
         return this;
     }
-
-
-
-
-
-
-
-
-
-
 }

@@ -48,10 +48,12 @@ public class ProductPage extends BasePage {
         return this;
     }
     public ProductPage checkButtonToBuy(){
+        wait30second.until(ExpectedConditions.visibilityOf(buttonToBuy));
         assertThat(buttonToBuy.isDisplayed()).as("Присутствует кнопка Купить").isTrue();
         return this;
     }
     public ProductPage clickOnButtonToBuy(){
+
         buttonToBuy.click();
         return this;
     }
