@@ -1,5 +1,7 @@
 package ru.surovtseva.dns.hw6.test;
 
+import io.qameta.allure.Feature;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.surovtseva.dns.hw6.base.BaseTest;
 import ru.surovtseva.dns.hw6.common.SubmenuButtons;
@@ -8,8 +10,9 @@ import ru.surovtseva.dns.hw6.pages.HomePage;
 
 import static ru.surovtseva.dns.hw6.common.Configuration.*;
 
-
+@Feature("Избранные товары")
 public class FavouriteGoodsDnsTest extends BaseTest {
+    @DisplayName("Создание списка избранных товаров")
     @Test
     void createWishlistTest(){
         FavouriteGoodsPage favouriteGoodsPage = (FavouriteGoodsPage) (new HomePage(driver)
@@ -24,10 +27,12 @@ public class FavouriteGoodsDnsTest extends BaseTest {
         favouriteGoodsPage
                 .checkFavouriteGoodsPage()
                 .clickOnButtonCreateWishlist()
+                .checkPageTitle()
                 .createWishlist(LIST_NAME)
                 .checkCreatedListIsDisplayed(LIST_NAME);
     }
 
+    @DisplayName("Добавление товара в Избранное")
     @Test
     void addProductToFavouriteTest() {
         FavouriteGoodsPage favouriteGoodsPage = (FavouriteGoodsPage) (new HomePage(driver)

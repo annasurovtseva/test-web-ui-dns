@@ -1,5 +1,6 @@
 package ru.surovtseva.dns.hw6.base;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +33,7 @@ public class UserMenu extends BasePage {
         }
     }
 
+    @Step("В меню пользователя указано имя {name}")
     public UserMenu checkUserName(String name){
         wait30second.until(ExpectedConditions.visibilityOf(userName));
         assertThat(userName.getText().equals(name))

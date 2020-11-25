@@ -1,5 +1,6 @@
 package ru.surovtseva.dns.hw6.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,7 @@ public class EntryOrRegistryPage extends BasePage {
     @FindBy(xpath = "//div[@class='block-other-login-methods__password-caption']")
     private WebElement buttonEntryWithPass;
 
+    @Step("Открыта форма Войти или зарегистрироваться")
     public EntryOrRegistryPage checkPageTitle(){
         wait30second.until(ExpectedConditions.visibilityOf(pageTitle));
         assertThat(pageTitle.getText().contains("Войти\nили зарегистрироваться"))
@@ -26,18 +28,21 @@ public class EntryOrRegistryPage extends BasePage {
         return this;
     }
 
+    @Step("Присутствует кнопка Войти с паролем")
     public EntryOrRegistryPage checkButtonEntryWithPass(){
         wait30second.until(ExpectedConditions.visibilityOf(buttonEntryWithPass));
-        assertThat(buttonEntryWithPass.isDisplayed()).as("Присутствует кнопка Воти с паролем").isTrue();
+        assertThat(buttonEntryWithPass.isDisplayed()).as("Присутствует кнопка Войти с паролем").isTrue();
         return this;
     }
 
+    @Step("Проверка формы Войти или зарегистрироваться")
     public EntryOrRegistryPage checkEntryOrRegistryPage(){
         checkPageTitle();
         checkButtonEntryWithPass();
         return this;
     }
 
+    @Step("Нажата кнопка Войти с паролем")
     public EntryWithPassPage clickOnButtonEntryWithPass(){
         wait30second.until(ExpectedConditions.visibilityOf(buttonEntryWithPass));
         buttonEntryWithPass.click();

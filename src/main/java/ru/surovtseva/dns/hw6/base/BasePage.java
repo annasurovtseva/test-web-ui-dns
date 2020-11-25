@@ -16,6 +16,7 @@ public abstract class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+
     public MainMenu getMainMenu() {
         return new MainMenu(driver);
     }

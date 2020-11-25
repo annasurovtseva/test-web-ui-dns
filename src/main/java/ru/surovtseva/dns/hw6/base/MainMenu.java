@@ -1,5 +1,6 @@
 package ru.surovtseva.dns.hw6.base;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,12 +23,14 @@ public class MainMenu extends BasePage {
     @FindBy (xpath = "//div[@class='header__login']/img[@class='header-profile__avatar loaded']")
     private WebElement imgAvatarHeader;
 
+    @Step("Нажата кнопка Войти")
     public EntryOrRegistryPage clickOnButtonEntry(){
         wait30second.until(ExpectedConditions.visibilityOf(buttonEntry));
         buttonEntry.click();
         return new EntryOrRegistryPage(driver);
     }
 
+    @Step("Раскрыто меню пользователя")
     public UserMenu openUserMenu(){
         wait30second.until(ExpectedConditions.visibilityOf(imgAvatarHeader));
         Actions actionHeader = new Actions(driver);
@@ -35,6 +38,7 @@ public class MainMenu extends BasePage {
         return new UserMenu(driver);
     }
 
+    @Step("Введен запрос для поиска")
     public ProductPage sendSearchRequest(String searchRequest){
         wait30second.until(ExpectedConditions.visibilityOf(imgAvatarHeader));
         inputSearch.sendKeys(searchRequest);
